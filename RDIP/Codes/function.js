@@ -107,3 +107,28 @@ var hin7 = ['एक बड़ी सी किताब वहाँ है',
 
 
  var hindi = [hin1,hin2,hin3,hin4,hin5,hin6,hin7];
+ var select=document.getElementById("choose");
+ function run()
+ {
+     if(select.value==="english")
+     {
+        document.getElementById("sen1").innerHTML="select buttons in proper order"
+        document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
+     }
+     else if(select.value==="hindi")
+     {
+        document.getElementById("sen1").innerHTML="select buttons in proper order"
+        document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
+
+     }
+
+
+     else
+     {
+
+        document.getElementById("sen1").innerHTML=""
+        document.getElementById("sen2").innerHTML=""
+        
+
+     }
+ }
