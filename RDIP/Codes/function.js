@@ -108,17 +108,62 @@ var hin7 = ['एक बड़ी सी किताब वहाँ है',
 
  var hindi = [hin1,hin2,hin3,hin4,hin5,hin6,hin7];
  var select=document.getElementById("choose");
+/*
+function fs()
+{
+
+
+}*/
+
+function wordshuffle(sentence)
+{
+var words=sentence.split(" ")
+words = words.sort(() => Math.random() - 0.5)
+return words;
+
+}
+
  function run()
  {
+     var i,j,val,finalsent="",form;
      if(select.value==="english")
      {
         document.getElementById("sen1").innerHTML="select buttons in proper order"
         document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
+       var ran=Math.floor(Math.random() * 10);
+       var ind=Math.floor(Math.random() * english[ran].length);
+        var shuffle=wordshuffle(english[ran][ind]);
+        for(i=0;i<shuffle.length;i++)
+        {
+            val=shuffle[i];
+            //var ids="btn"+i;
+           //form= "<button id='"btn"+i' onclick='fs(this.id,this.value)' value=val>"+val+"</button>"  ;
+
+           //var button = document.createElement("button");
+           //button.innerHTML = "exp";
+           
+
+            finalsent+=" "+ val;
+        }
+        document.getElementById("res").innerHTML=finalsent;
+
      }
      else if(select.value==="hindi")
      {
         document.getElementById("sen1").innerHTML="select buttons in proper order"
         document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
+        var ran=Math.floor(Math.random() * 7);
+        var ind=Math.floor(Math.random() * hindi[ran].length);
+         var shuffle=wordshuffle(hindi[ran][ind]);
+         /*for(i=0;i<shuffle.length;i++)
+         {
+             val=shuffle[i];
+            form= "<button id="'btn"+i+"' onclick='fs(this.id,this.value)' value='"+val+"'>"+val+"</button>"  ;
+             finalsent+=form
+         }
+         document.getElementById("res").innerHTML=finalsent;
+ 
+         */
 
      }
 
