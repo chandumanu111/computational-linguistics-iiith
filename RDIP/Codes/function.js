@@ -108,12 +108,6 @@ var hin7 = ['एक बड़ी सी किताब वहाँ है',
 
  var hindi = [hin1,hin2,hin3,hin4,hin5,hin6,hin7];
  var select=document.getElementById("choose");
-/*
-function fs()
-{
-
-
-}*/
 
 function wordshuffle(sentence)
 {
@@ -125,55 +119,80 @@ return words;
 
  function run()
  {
-     var i,j,val,finalsent="",form;
+     var val='',finalsent="",str='';
+     var docFrag = document.createDocumentFragment();
      if(select.value==="english")
      {
         document.getElementById("sen1").innerHTML="select buttons in proper order"
         document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
-       var ran=Math.floor(Math.random() * 10);
-       var ind=Math.floor(Math.random() * english[ran].length);
-        var shuffle=wordshuffle(english[ran][ind]);
-        for(i=0;i<shuffle.length;i++)
+        var ind=Math.floor(Math.random() * english.length);
+        var shuffle=wordshuffle(english[ind][0]);
+        var len=shuffle.length;
+        let i = 1;
+        let body = document.getElementsByTagName("body")[0];
+
+        for(i;i<=len;i++)
         {
-            val=shuffle[i];
-            //var ids="btn"+i;
-           //form= "<button id='"btn"+i' onclick='fs(this.id,this.value)' value=val>"+val+"</button>"  ;
+            val=shuffle[i-1];
+            let button = document.createElement("button");
+            button.style="margin-right: 30px"
+            button.innerHTML = val;
+            body.appendChild(button);
+            button.addEventListener ("click",function(){
+                
+                
+                
+                str+=this.innerHTML+"  "
+                document.getElementById("dis").innerHTML=str;
+                this.style.display = 'none'
+                count+=1
 
-           //var button = document.createElement("button");
-           //button.innerHTML = "exp";
-           
+            
+            });
 
-            finalsent+=" "+ val;
         }
-        document.getElementById("res").innerHTML=finalsent;
-
-     }
-     else if(select.value==="hindi")
+    }
+        if(select.value==="hindi")
      {
-        document.getElementById("sen1").innerHTML="select buttons in proper order"
-        document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
-        var ran=Math.floor(Math.random() * 7);
-        var ind=Math.floor(Math.random() * hindi[ran].length);
-         var shuffle=wordshuffle(hindi[ran][ind]);
-         /*for(i=0;i<shuffle.length;i++)
-         {
-             val=shuffle[i];
-            form= "<button id="'btn"+i+"' onclick='fs(this.id,this.value)' value='"+val+"'>"+val+"</button>"  ;
-             finalsent+=form
-         }
-         document.getElementById("res").innerHTML=finalsent;
- 
-         */
+        document.getElementById("sen11").innerHTML="select buttons in proper order"
+        document.getElementById("sen22").innerHTML="sentence can either be interrogative or declarative"
+        var ind=Math.floor(Math.random() * hindi.length);
+        var shuffle=wordshuffle(hindi[ind][0]);
+        var len=shuffle.length;
+        let i = 1;
+        let body = document.getElementsByTagName("body")[0];
 
-     }
+        for(i;i<=len;i++)
+        {
+            val=shuffle[i-1];
+            let button = document.createElement("button");
+            button.style="margin-right: 30px"
+            button.innerHTML = val;
+            body.appendChild(button);
+            button.addEventListener ("click",function(){
+                
+                
+                
+                str+=this.innerHTML+"  "
+                document.getElementById("dis").innerHTML=str;
+                this.style.display = 'none'
+                count+=1
+
+            
+            });
+
+        }
 
 
-     else
-     {
 
-        document.getElementById("sen1").innerHTML=""
-        document.getElementById("sen2").innerHTML=""
+
         
+        let button = document.createElement("button");
+            button.style="margin-right: 30px"
+            button.innerHTML = 're frame the sentence';
+            body.appendChild(button);
+
 
      }
- }
+}
+ 
