@@ -117,16 +117,12 @@ return words;
 
 }
 
-function display(shuffle)
+function display(shuffle,ind,lang)
 {
-
-
-
     var len=shuffle.length;
     let i = 0,str="",count=0;
     var clicked=[];
     let body = document.getElementsByTagName("body")[0];
-
     for(i;i<len;i++)
     {
         val=shuffle[i];
@@ -135,11 +131,9 @@ function display(shuffle)
         button.id='btn'+i
         button.innerHTML = val;
         body.appendChild(button);
-        button.addEventListener ("click",function(){
-            
-            
-            
-            str+=this.innerHTML+"  "
+        button.addEventListener ("click",function()
+        {     
+            str+=this.innerHTML+" "
             document.getElementById("dis").innerHTML=str;
             this.style.display = 'none'
             clicked.push(this.innerHTML)
@@ -151,22 +145,43 @@ function display(shuffle)
             button.id='check'
             button.innerHTML = 'check';
             body.appendChild(button);
+
            button.addEventListener("click",function()
            {
+            var st=str.trim();
             
+        
+                var length=english[ind].length;
+                var loopvar=false
+                
+
+                for(var det=0;det<length;det++)
+                {
+                    
+                    if(english[ind][det]==st)
+                    {
+                        loopvar=true
+                        document.getElementById("count").innerHTML="Correct Answer"
+
+                    
+                    }
+                }
+                if(!loopvar)
+                {
+                    document.getElementById("count").innerHTML="wrong Answer"
+                }
 
 
-           })
-
-            }
-
+            
+            
         
         });
 
 
     }
     
-    
+})
+    }
     let button = document.createElement("button");
         button.style="margin-right: 30px"
          button.innerHTML = 'reframe ';
@@ -175,6 +190,7 @@ function display(shuffle)
         body.appendChild(button);
         button.addEventListener("click",function(){
             document.getElementById("dis").innerHTML=""
+            document.getElementById("count").innerHTML=""
         for (var j=0;j<len;j++)
         {
             if(!(clicked.includes(shuffle[j])))
@@ -187,14 +203,7 @@ function display(shuffle)
 
         });
     
-          
-
-        
-    
-    
-    return str;
-    
-
+ return st;
 }
 
  function run()
@@ -203,11 +212,12 @@ function display(shuffle)
 
      if(select.value==="english")
      {
+         var lang='english'
         document.getElementById("sen1").innerHTML="select buttons in proper order"
         document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
         var ind=Math.floor(Math.random() * english.length);
         var shuffle=wordshuffle(english[ind][0]);
-        var sent=display(shuffle);
+        var sent=display(shuffle,ind,lang);
 
         
     }
@@ -217,41 +227,96 @@ function display(shuffle)
         document.getElementById("sen22").innerHTML="sentence can either be interrogative or declarative"
         var ind=Math.floor(Math.random() * hindi.length);
         var shuffle=wordshuffle(hindi[ind][0]);
-        var len=shuffle.length;
-        let i = 1;
-        let body = document.getElementsByTagName("body")[0];
-
-        for(i;i<=len;i++)
-        {
-            val=shuffle[i-1];
-            let button = document.createElement("button");
-            button.style="margin-right: 30px"
-            button.innerHTML = val;
-            body.appendChild(button);
-            button.addEventListener ("click",function(){
-                
-                
-                
-                str+=this.innerHTML+"  "
-                document.getElementById("dis").innerHTML=str;
-                this.style.display = 'none'
-                count+=1
-
-            
-            });
-
-        }
-
-
+        var sent=display2(shuffle,ind,lang);
     
-
         
-        let button = document.createElement("button");
-            button.style="margin-right: 30px"
-            button.innerHTML = 're frame the sentence';
-            body.appendChild(button);
-
+        }
+        
     }
      
-}
- 
+
+    function display2(shuffle,ind,lang)
+    {
+        var len=shuffle.length;
+        let i = 0,str="",count=0;
+        var clicked=[];
+        let body = document.getElementsByTagName("body")[0];
+        for(i;i<len;i++)
+        {
+            val=shuffle[i];
+            let button = document.createElement("button");
+            button.style="margin-right: 30px"
+            button.id='btn'+i
+            button.innerHTML = val;
+            body.appendChild(button);
+            button.addEventListener ("click",function()
+            {     
+                str+=this.innerHTML+" "
+                document.getElementById("dis").innerHTML=str;
+                this.style.display = 'none'
+                clicked.push(this.innerHTML)
+                count+=1
+                if(count==len)
+                {
+                    let button = document.createElement("button");
+                button.style="margin-right: 30px"
+                button.id='check'
+                button.innerHTML = 'check';
+                body.appendChild(button);
+
+               button.addEventListener("click",function()
+               {
+                var st=str.trim();
+                
+                    var length=hindi[ind].length;
+                    var loopvar=false
+                    
+            
+                    for(var det=0;det<length;det++)
+                    {
+                        
+                
+                        if(hindi[ind][det]==st)
+                        {
+                            loopvar=true
+                            document.getElementById("count").innerHTML="Correct Answer"
+    
+                        
+                        }
+                    }
+                    if(!loopvar)
+                    {
+                        document.getElementById("count").innerHTML="wrong Answer"
+                    }
+     
+            });
+    
+    
+        }
+        
+    })
+        }
+        let button = document.createElement("button");
+            button.style="margin-right: 30px"
+             button.innerHTML = 'reframe ';
+            button.setAttribute("name","reset")
+            button.id="reset"
+            body.appendChild(button);
+            button.addEventListener("click",function(){
+                document.getElementById("dis").innerHTML=""
+                document.getElementById("count").innerHTML=""
+            for (var j=0;j<len;j++)
+            {
+                if(!(clicked.includes(shuffle[j])))
+                {
+                    document.getElementById('btn'+j).style.display='none'
+                }
+            }
+            document.getElementById("reset").style.display='none'
+                display(shuffle);
+    
+            });
+        
+     return st;
+    }
+    
