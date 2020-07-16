@@ -117,40 +117,99 @@ return words;
 
 }
 
+function display(shuffle)
+{
+
+
+
+    var len=shuffle.length;
+    let i = 0,str="",count=0;
+    var clicked=[];
+    let body = document.getElementsByTagName("body")[0];
+
+    for(i;i<len;i++)
+    {
+        val=shuffle[i];
+        let button = document.createElement("button");
+        button.style="margin-right: 30px"
+        button.id='btn'+i
+        button.innerHTML = val;
+        body.appendChild(button);
+        button.addEventListener ("click",function(){
+            
+            
+            
+            str+=this.innerHTML+"  "
+            document.getElementById("dis").innerHTML=str;
+            this.style.display = 'none'
+            clicked.push(this.innerHTML)
+            count+=1
+            if(count==len)
+            {
+                let button = document.createElement("button");
+            button.style="margin-right: 30px"
+            button.id='check'
+            button.innerHTML = 'check';
+            body.appendChild(button);
+           button.addEventListener("click",function()
+           {
+            
+
+
+           })
+
+            }
+
+        
+        });
+
+
+    }
+    
+    
+    let button = document.createElement("button");
+        button.style="margin-right: 30px"
+         button.innerHTML = 'reframe ';
+        button.setAttribute("name","reset")
+        button.id="reset"
+        body.appendChild(button);
+        button.addEventListener("click",function(){
+            document.getElementById("dis").innerHTML=""
+        for (var j=0;j<len;j++)
+        {
+            if(!(clicked.includes(shuffle[j])))
+            {
+                document.getElementById('btn'+j).style.display='none'
+            }
+        }
+        document.getElementById("reset").style.display='none'
+            display(shuffle);
+
+        });
+    
+          
+
+        
+    
+    
+    return str;
+    
+
+}
+
  function run()
  {
-     var val='',finalsent="",str='';
-     var docFrag = document.createDocumentFragment();
+     var val='';
+
      if(select.value==="english")
      {
         document.getElementById("sen1").innerHTML="select buttons in proper order"
         document.getElementById("sen2").innerHTML="sentence can either be interrogative or declarative"
         var ind=Math.floor(Math.random() * english.length);
         var shuffle=wordshuffle(english[ind][0]);
-        var len=shuffle.length;
-        let i = 1;
-        let body = document.getElementsByTagName("body")[0];
+        var sent=display(shuffle);
 
-        for(i;i<=len;i++)
-        {
-            val=shuffle[i-1];
-            let button = document.createElement("button");
-            button.style="margin-right: 30px"
-            button.innerHTML = val;
-            body.appendChild(button);
-            button.addEventListener ("click",function(){
-                
-                
-                
-                str+=this.innerHTML+"  "
-                document.getElementById("dis").innerHTML=str;
-                this.style.display = 'none'
-                count+=1
-
-            
-            });
-
-        }
+        
     }
         if(select.value==="hindi")
      {
@@ -184,7 +243,7 @@ return words;
         }
 
 
-
+    
 
         
         let button = document.createElement("button");
@@ -192,7 +251,7 @@ return words;
             button.innerHTML = 're frame the sentence';
             body.appendChild(button);
 
-
-     }
+    }
+     
 }
  
