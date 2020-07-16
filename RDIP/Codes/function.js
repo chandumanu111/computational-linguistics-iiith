@@ -169,6 +169,21 @@ function display(shuffle,ind,lang)
                 if(!loopvar)
                 {
                     document.getElementById("count").innerHTML="wrong Answer"
+                    document.getElementById("count").innerHTML="wrong Answer"
+                        let button = document.createElement("button");
+                        button.style="margin-right: 30px"
+                        button.id='get'
+                        button.innerHTML = 'get correct answer'
+                        body.appendChild(button);
+                        button.addEventListener("click",function(){
+
+                        
+                        for(var det=0;det<length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML=english[ind][det];
+    
+                        }
+                    })
                 }
 
 
@@ -287,6 +302,22 @@ function display(shuffle,ind,lang)
                     if(!loopvar)
                     {
                         document.getElementById("count").innerHTML="wrong Answer"
+                        let button = document.createElement("button");
+                        button.style="margin-right: 30px"
+                        button.id='get'
+                        button.innerHTML = 'get correct answer'
+                        body.appendChild(button);
+                        button.addEventListener("click",function(){
+
+                        
+                        for(var det=0;det<length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML=hindi[ind][det];
+    
+                        }
+                    })
+
+
                     }
      
             });
