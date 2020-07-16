@@ -206,6 +206,11 @@ function display(shuffle,ind,lang)
         button.addEventListener("click",function(){
             document.getElementById("dis").innerHTML=""
             document.getElementById("count").innerHTML=""
+            for(var det=0;det<english[ind].length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML="";
+    
+                        }
         for (var j=0;j<len;j++)
         {
             if(!(clicked.includes(shuffle[j])))
@@ -336,6 +341,13 @@ function display(shuffle,ind,lang)
             button.addEventListener("click",function(){
                 document.getElementById("dis").innerHTML=""
                 document.getElementById("count").innerHTML=""
+
+                for(var det=0;det<hindi[ind].length;det++)
+                {
+                    document.getElementById("crct"+(det+1)).innerHTML="";
+
+                }
+
             for (var j=0;j<len;j++)
             {
                 if(!(clicked.includes(shuffle[j])))
