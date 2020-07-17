@@ -161,15 +161,15 @@ function display(shuffle,ind,lang)
                     if(english[ind][det]==st)
                     {
                         loopvar=true
-                        document.getElementById("count").innerHTML="Correct Answer"
+                        document.getElementById("count").innerHTML="Correct Answer".fontcolor("green");
+                        document.getElementById("check").style.display="none"
 
                     
                     }
                 }
                 if(!loopvar)
                 {
-                    document.getElementById("count").innerHTML="wrong Answer"
-                    document.getElementById("count").innerHTML="wrong Answer"
+                    document.getElementById("count").innerHTML="wrong Answer".fontcolor("red");
                         let button = document.createElement("button");
                         button.style="margin-right: 30px"
                         button.id='get'
@@ -335,8 +335,8 @@ function display(shuffle,ind,lang)
                         if(hindi[ind][det]==st)
                         {
                             loopvar=true
-                            document.getElementById("count").innerHTML="Correct Answer"
-    
+                            document.getElementById("count").innerHTML="Correct Answer".fontcolor("green")
+                            document.getElementById("check").style.display="none"
                         
                         }
                     }
@@ -344,7 +344,7 @@ function display(shuffle,ind,lang)
                     {
 
                         document.getElementById("check").style.display='none'
-                        document.getElementById("count").innerHTML="wrong Answer"
+                        document.getElementById("count").innerHTML="wrong Answer".fontcolor("red")
                         let button = document.createElement("button");
                         button.style="margin-right: 30px"
                         button.id='get'
