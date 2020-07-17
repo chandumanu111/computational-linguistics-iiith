@@ -174,15 +174,51 @@ function display(shuffle,ind,lang)
                         button.style="margin-right: 30px"
                         button.id='get'
                         button.innerHTML = 'get correct answer'
+                        button.value='get correct answer'
+                        document.getElementById("check").style.display='none'
                         body.appendChild(button);
                         button.addEventListener("click",function(){
-
-                        
+                        if(this.value=='get correct answer'){
                         for(var det=0;det<length;det++)
                         {
                             document.getElementById("crct"+(det+1)).innerHTML=english[ind][det];
     
                         }
+
+                        this.value='hide correct answer'
+                        this.innerHTML="hide correct answer"
+                         }
+
+                         else if(this.value=='hide correct answer'){
+
+                            for(var det=0;det<length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML='';
+    
+                        }
+
+                        this.value='get answers'
+                        this.innerHTML="get answers"
+                        
+                        document.getElementById("dis").innerHTML=""
+
+                         }
+                         else
+                         {
+                            for(var det=0;det<length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML=english[ind][det];
+    
+                        }
+
+                        this.value='hide correct answer'
+                        this.innerHTML="hide correct answer"
+                        
+
+                        document.getElementById("dis").innerHTML=""
+                         }
+
+
                     })
                 }
 
@@ -306,19 +342,50 @@ function display(shuffle,ind,lang)
                     }
                     if(!loopvar)
                     {
+
+                        document.getElementById("check").style.display='none'
                         document.getElementById("count").innerHTML="wrong Answer"
                         let button = document.createElement("button");
                         button.style="margin-right: 30px"
                         button.id='get'
-                        button.innerHTML = 'get correct answer'
+                        button.value = 'get correct answer'
+                        button.innerHTML='get correct answer'
                         body.appendChild(button);
                         button.addEventListener("click",function(){
 
-                        
+                        if(this.value==='get correct answer'){
                         for(var det=0;det<length;det++)
                         {
                             document.getElementById("crct"+(det+1)).innerHTML=hindi[ind][det];
     
+                        }
+                        this.value='hide correct sentence'
+                        this.innerHTML='hide correct sentence'
+                        }
+                        else if(this.value==='hide correct sentence')
+                        {
+                            for(var det=0;det<length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML="";
+    
+                        }
+                        this.innerHTML='get answers'
+                        this.value='get answers'
+                        
+
+                        }
+                        else
+                        {
+                            for(var det=0;det<length;det++)
+                        {
+                            document.getElementById("crct"+(det+1)).innerHTML=hindi[ind][det];
+    
+                        }
+                        this.value='hide correct sentence'
+                        this.innerHTML='hide correct centence'
+                        
+
+
                         }
                     })
 
